@@ -41,6 +41,13 @@ honor-fmbp (1.0.6) UNRELEASED; urgency=medium
     (they also matched inputN and remove events, logging RUN failures).
   * honor-fmbp-config: postinst no longer glues system-db:local onto a dconf
     profile that lacks a trailing newline.
+  * honor-fmbp-archive-keyring: remove the source file add-apt-repository
+    created for the same PPA (drphilth-ubuntu-honor-fmbp-*.sources/.list)
+    in preinst. Since 1.0.3 the metapackage pulls in this package's own
+    honor-fmbp.sources; with both present apt refuses to read the source
+    list ("Conflicting values set for option Signed-By") and every later
+    apt update fails. Other files that mention the PPA are reported, not
+    edited. (Upstream issue #1.)
 
  -- Manuel Rüger <manuel@rueg.eu>  Tue, 24 Nov 2026 10:27:07 +0100
 

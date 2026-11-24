@@ -11,6 +11,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/).
 ## [Unreleased]
 
 ### Fixed
+- **`apt update` no longer breaks after installing.** Following the README
+  (`add-apt-repository`, then `apt install honor-magicbook-pro-14`) left the
+  PPA configured twice with different keys, and apt refused to read its source
+  list ("Conflicting values set for option Signed-By"). The keyring package now
+  removes the duplicate on install. Already affected? See the note under the
+  install commands in the README.
 - **Touchpad no longer makes the screen jump between dark and full brightness.**
   The touchpad sends phantom brightness-key presses that never release; a new
   hwdb rule drops them in the kernel. The same rule stops the microphone
